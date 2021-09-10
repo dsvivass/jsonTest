@@ -7,26 +7,62 @@
     <title>Document</title>
 </head>
 <body>
-    [
-    {
-        "id": 1,
-        "profilePicture": "assets/building.jpg",
-        "username": ["Edificio ",1]
-    },
-    {
-        "id": 2,
-        "profilePicture": "assets/DLplantilla.jpg",
-        "username": ["Edificio ",2]
-    },
-    {
-        "id": 3,
-        "profilePicture": "assets/towers.jpg",
-        "username": ["Edificio ",115]
-    },
-    {
-        "id": 1,
-        "profilePicture": "assets/building.jpg",
-        "username": ["Edificio ",1]
-    }]
+    <h1>APIq</h1>
+    <button id="btnSignup">SignUp</button>
+    <button id="btnLogin">Login</button>
+    <button id="btnLogout">Logout</button>
+
+    <script>
+        
+        const api_url = "http://ec2-18-116-98-142.us-east-2.compute.amazonaws.com:8000/"
+        
+        document.getElementById('btnSignup').addEventListener('click', () => {
+            
+            var obj = {
+                "email": "pipe2Fetch@dds.com",
+                "username": "fetch2",
+                "password": "NACIONAL"
+            }
+
+            fetch( api_url + "users/signup/",
+            {
+                // mode: 'cors',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                // 'Access-Control-Allow-Origin': '*'
+                },
+                method: "POST",
+                body: JSON.stringify(obj)
+            })
+                .then(function(response){ return response.json(); })
+                .then(function(data){ console.log(data) })
+
+        })
+
+        document.getElementById('btnLogin').addEventListener('click', () => {
+            
+            var obj = {
+                "email": "pipe2Fetch@dds.com",
+                "password": "NACIONAL"
+            }
+
+            fetch( api_url + "users/login/login/",
+            {
+                // mode: 'cors',
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                // 'Access-Control-Allow-Origin': '*'
+                },
+                method: "POST",
+                body: JSON.stringify(obj)
+            })
+                .then(function(response){ return response.json(); })
+                .then(function(data){ console.log(data) })
+
+        })
+        
+    </script>
 </body>
 </html>
